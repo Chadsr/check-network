@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "ATTENTION: This script needs to be run with root privileges (sudo $0)"
+echo
+
 wlan_iface=wlan0
 eth_iface=eth0
 
@@ -15,8 +18,8 @@ function check_address() {
     echo "Interface has valid IP associated!"
   else
     echo "Interface an no valid IP. Attempting to restart interface"
-    ifdown $1
-    ifup $1
+    ifconfig $1 down
+    ifconfig $1 up
   fi
 }
 
